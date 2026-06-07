@@ -1,5 +1,5 @@
 ---
-import { translations, PHONE_DISPLAY, PHONE_TEL } from '../i18n/translations.js';
+import { translations, PHONE_DISPLAY, PHONE_TEL, EMAIL } from '../i18n/translations.js';
 import Logo from './Logo.astro';
 const t = translations.en;
 const year = new Date().getFullYear();
@@ -38,6 +38,7 @@ const year = new Date().getFullYear();
     <div class="footer__col">
       <h3 data-i18n="footer.contactTitle">{t['footer.contactTitle']}</h3>
       <a href={`tel:${PHONE_TEL}`}>{PHONE_DISPLAY}</a>
+      <a href={`mailto:${EMAIL}`}>{EMAIL}</a>
       <span class="footer__muted" data-i18n="footer.license">{t['footer.license']}</span>
     </div>
   </div>

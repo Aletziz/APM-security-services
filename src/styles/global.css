@@ -190,15 +190,18 @@ h4 {
   border-color: currentColor;
 }
 
-.btn--ghost:hover {
-  background: currentColor;
-}
-
+/* On dark backgrounds: fill white, ink text (explicit colors so text stays
+   visible — currentColor caused ink-on-ink before). */
 .btn--ghost.on-dark:hover {
+  background: var(--white);
+  border-color: var(--white);
   color: var(--ink);
 }
 
+/* On light backgrounds: fill ink, white text. */
 .btn--ghost.on-light:hover {
+  background: var(--ink);
+  border-color: var(--ink);
   color: var(--white);
 }
 

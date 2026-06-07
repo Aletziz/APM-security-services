@@ -91,6 +91,7 @@ export const translations = {
     'contact.phoneLabel': 'Phone',
     'contact.waLabel': 'WhatsApp',
     'contact.waText': 'Message us',
+    'contact.emailLabel': 'Email',
     'contact.formName': 'Full name',
     'contact.formNamePh': 'John Smith',
     'contact.formPhone': 'Phone',
@@ -212,6 +213,7 @@ export const translations = {
     'contact.phoneLabel': 'Teléfono',
     'contact.waLabel': 'WhatsApp',
     'contact.waText': 'Escríbenos',
+    'contact.emailLabel': 'Correo',
     'contact.formName': 'Nombre completo',
     'contact.formNamePh': 'Juan Pérez',
     'contact.formPhone': 'Teléfono',
@@ -248,3 +250,4 @@ export const translations = {
 export const PHONE_DISPLAY = '+1 561 808-5917';
 export const PHONE_TEL = '+15618085917';
 export const PHONE_WA = '15618085917';
+export const EMAIL = 'apmsservice@yahoo.com';
