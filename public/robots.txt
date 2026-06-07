@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://apmsecurityservices.com/sitemap-index.xml
+Sitemap: https://apmsecurityservice.com/sitemap-index.xml

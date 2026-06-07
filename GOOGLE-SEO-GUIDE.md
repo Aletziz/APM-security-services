@@ -1,6 +1,6 @@
 # Guía: poner el sitio en línea y que aparezca en Google
 
-Sitio: **APM Security Services** · Dominio: **apmsecurityservices.com**
+Sitio: **APM Security Services** · Dominio: **apmsecurityservice.com**
 Repo: `Aletziz/APM-security-services`
 
 Sigue los bloques en orden. Tiempo total ~45 min de trabajo (Google tarda días en indexar).
@@ -23,7 +23,7 @@ Sigue los bloques en orden. Tiempo total ~45 min de trabajo (Google tarda días 
 
 ---
 
-## 2) Conectar el dominio apmsecurityservices.com
+## 2) Conectar el dominio apmsecurityservice.com
 
 Primero necesitas **ser dueño del dominio**. Si aún no lo compraste, hazlo en un registrador
 (Namecheap, GoDaddy, Google Domains/Squarespace, Cloudflare, etc.).
@@ -31,8 +31,8 @@ Primero necesitas **ser dueño del dominio**. Si aún no lo compraste, hazlo en 
 En Vercel:
 
 1. Abre tu proyecto → **Settings → Domains**.
-2. Escribe `apmsecurityservices.com` y pulsa **Add**.
-3. Añade también `www.apmsecurityservices.com` (Vercel lo redirige al principal).
+2. Escribe `apmsecurityservice.com` y pulsa **Add**.
+3. Añade también `www.apmsecurityservice.com` (Vercel lo redirige al principal).
 4. Vercel te mostrará los **registros DNS** que debes poner en tu registrador. Normalmente:
 
    | Tipo  | Nombre | Valor |
@@ -44,8 +44,8 @@ En Vercel:
    > Si tu DNS está en **Cloudflare**, pon los registros en modo **DNS only** (nube gris), no proxy.
 
 5. Guarda en el registrador. La propagación DNS tarda de minutos a 24–48 h.
-6. Cuando Vercel muestre **"Valid Configuration"** y el candado 🔒 (HTTPS) esté activo, listo.
-7. Verifica que `https://apmsecurityservices.com` abre el sitio con candado.
+6. Cuando Vercel muestre **"Valid Configuration"** y el candado (HTTPS) esté activo, listo.
+7. Verifica que `https://apmsecurityservice.com` abre el sitio con candado.
 
 ---
 
@@ -55,7 +55,7 @@ Esto le dice a Google "este sitio existe, indéxalo".
 
 1. Entra a **https://search.google.com/search-console** con tu cuenta de Google.
 2. Pulsa **Agregar propiedad** → elige el tipo **Dominio** (recomendado).
-3. Escribe `apmsecurityservices.com` y pulsa **Continuar**.
+3. Escribe `apmsecurityservice.com` y pulsa **Continuar**.
 4. Google te da un registro **TXT** para verificar. Cópialo y créalo en el DNS de tu registrador:
 
    | Tipo  | Nombre | Valor |
@@ -67,15 +67,15 @@ Esto le dice a Google "este sitio existe, indéxalo".
    ```
    sitemap-index.xml
    ```
-   pulsa **Enviar**. (URL completa: `https://apmsecurityservices.com/sitemap-index.xml`)
-7. Ve a **Inspección de URLs**, pega `https://apmsecurityservices.com/` y pulsa
+   pulsa **Enviar**. (URL completa: `https://apmsecurityservice.com/sitemap-index.xml`)
+7. Ve a **Inspección de URLs**, pega `https://apmsecurityservice.com/` y pulsa
    **Solicitar indexación**. Esto acelera la primera aparición.
 
 > Google puede tardar de **2 días a 2 semanas** en mostrar el sitio en resultados. Es normal.
 
 ---
 
-## 4) Perfil de Empresa de Google — ⭐ LO MÁS IMPORTANTE para las ubicaciones
+## 4) Perfil de Empresa de Google — LO MÁS IMPORTANTE para las ubicaciones
 
 Para que aparezcas cuando alguien busque *"security guard West Palm Beach"*,
 *"seguridad Miami"*, etc., y salgas en **Google Maps**, necesitas un **Perfil de Empresa
@@ -90,7 +90,7 @@ de Google** (antes "Google My Business"). Es gratis.
      dirección. Luego define **áreas de servicio**:
      **West Palm Beach, Broward (Fort Lauderdale), Miami, Orlando** (y ciudades cercanas).
    - **Sí:** ingresa la dirección real.
-5. Teléfono: **+1 561 808-5917** · Sitio web: **https://apmsecurityservices.com**
+5. Teléfono: **+1 561 808-5917** · Sitio web: **https://apmsecurityservice.com**
 6. **Verificación:** Google pedirá verificar (por teléfono, video o postal). Complétalo —
    sin verificar no apareces en Maps.
 7. Una vez verificado, completa el perfil al 100 %:
@@ -117,7 +117,7 @@ de Google** (antes "Google My Business"). Es gratis.
 
 ## 6) Comprobaciones rápidas
 
-- Vista previa al compartir el link (WhatsApp/Facebook): pega `https://apmsecurityservices.com`
+- Vista previa al compartir el link (WhatsApp/Facebook): pega `https://apmsecurityservice.com`
   en https://www.opengraph.xyz para ver la imagen y el texto.
 - Datos estructurados: prueba en https://search.google.com/test/rich-results.
 - Velocidad/SEO técnico: https://pagespeed.web.dev.
