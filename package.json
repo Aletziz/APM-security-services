@@ -8,6 +8,7 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
+    "deploy": "powershell -ExecutionPolicy Bypass -File ./deploy.ps1",
     "astro": "astro"
   },
   "dependencies": {

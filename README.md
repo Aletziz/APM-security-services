@@ -40,8 +40,29 @@ npm run preview  # preview the production build
 | Colors / fonts / spacing | `:root` in `src/styles/global.css` |
 | Sections | `src/components/*.astro`, assembled in `src/pages/index.astro` |
 
-## Deploy
+## Deploy — GitHub Pages
 
-The output in `./dist` is fully static — host it on any static host (Netlify, Vercel,
-Cloudflare Pages, GitHub Pages, S3, etc.). Update `site` in `astro.config.mjs` to the
-final domain for correct canonical/OG URLs.
+**Live:** https://aletziz.github.io/APM-security-services/
+
+The site is published to the **`gh-pages` branch** and served by GitHub Pages.
+Redeploy after any change with:
+
+```bash
+npm run deploy   # builds, then force-pushes ./dist to the gh-pages branch
+```
+
+### Note on GitHub Actions
+A workflow exists at [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) for
+automatic deploys on push. It currently **cannot run** because GitHub Actions is locked
+on this account due to a billing issue ("your account is locked due to a billing
+issue"). Until that's resolved at <https://github.com/settings/billing>, use
+`npm run deploy` (the branch method above), which does **not** use Actions minutes.
+
+Once billing is fixed, to switch to fully automatic deploys: set the Pages source back to
+**GitHub Actions** (Repo → Settings → Pages → Build and deployment → Source) and every
+push to `main` will deploy on its own.
+
+### Custom domain
+When a custom domain is ready, set `site` to it and **remove** `base` in
+`astro.config.mjs` (the `base` is only needed for the `/APM-security-services/` project
+path on github.io), then redeploy.
