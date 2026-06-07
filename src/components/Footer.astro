@@ -70,11 +70,14 @@ const year = new Date().getFullYear();
   .brand__mark {
     color: var(--accent);
     width: 32px;
-    display: inline-flex;
+    height: 34px;
+    flex: none;
+    display: block;
   }
+  /* explicit height (not auto) so iOS Safari doesn't collapse the SVG to 0 */
   .brand__logo {
     width: 100%;
-    height: auto;
+    height: 100%;
     display: block;
   }
   .brand__text strong {
