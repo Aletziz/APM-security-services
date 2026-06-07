@@ -1,0 +1,304 @@
+---
+import { translations, PHONE_DISPLAY, PHONE_TEL, PHONE_WA } from '../i18n/translations.js';
+const t = translations.en;
+---
+
+<section class="section section--dark" id="contact">
+  <div class="container contact">
+    <div class="contact__intro reveal">
+      <p class="eyebrow" data-i18n="contact.eyebrow">{t['contact.eyebrow']}</p>
+      <h2 data-i18n="contact.title">{t['contact.title']}</h2>
+      <p class="contact__lead" data-i18n="contact.lead">{t['contact.lead']}</p>
+
+      <div class="direct">
+        <p class="direct__title" data-i18n="contact.directTitle">{t['contact.directTitle']}</p>
+        <p class="direct__desc" data-i18n="contact.directDesc">{t['contact.directDesc']}</p>
+
+        <a class="direct__row" href={`tel:${PHONE_TEL}`}>
+          <span class="direct__k" data-i18n="contact.phoneLabel">{t['contact.phoneLabel']}</span>
+          <span class="direct__v">{PHONE_DISPLAY}</span>
+        </a>
+        <a
+          class="direct__row"
+          id="wa-direct"
+          href={`https://wa.me/${PHONE_WA}`}
+          target="_blank"
+          rel="noopener"
+        >
+          <span class="direct__k" data-i18n="contact.waLabel">{t['contact.waLabel']}</span>
+          <span class="direct__v" data-i18n="contact.waText">{t['contact.waText']}</span>
+        </a>
+      </div>
+    </div>
+
+    <form class="form reveal" style="--d:.1s" id="quote-form" novalidate>
+      <div class="field">
+        <label for="f-name" data-i18n="contact.formName">{t['contact.formName']}</label>
+        <input id="f-name" name="name" type="text" required autocomplete="name"
+          data-i18n-placeholder="contact.formNamePh" placeholder={t['contact.formNamePh']} />
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="f-phone" data-i18n="contact.formPhone">{t['contact.formPhone']}</label>
+          <input id="f-phone" name="phone" type="tel" required autocomplete="tel"
+            data-i18n-placeholder="contact.formPhonePh" placeholder={t['contact.formPhonePh']} />
+        </div>
+        <div class="field">
+          <label for="f-email" data-i18n="contact.formEmail">{t['contact.formEmail']}</label>
+          <input id="f-email" name="email" type="email" autocomplete="email"
+            data-i18n-placeholder="contact.formEmailPh" placeholder={t['contact.formEmailPh']} />
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="f-service" data-i18n="contact.formService">{t['contact.formService']}</label>
+          <div class="select-wrap">
+            <select id="f-service" name="service" required>
+              <option value="" data-i18n="contact.formServiceDefault">{t['contact.formServiceDefault']}</option>
+              <option data-i18n="services.1.title">{t['services.1.title']}</option>
+              <option data-i18n="services.2.title">{t['services.2.title']}</option>
+              <option data-i18n="services.3.title">{t['services.3.title']}</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label for="f-location" data-i18n="contact.formLocation">{t['contact.formLocation']}</label>
+          <div class="select-wrap">
+            <select id="f-location" name="location" required>
+              <option value="" data-i18n="contact.formLocationDefault">{t['contact.formLocationDefault']}</option>
+              <option data-i18n="coverage.1.name">{t['coverage.1.name']}</option>
+              <option data-i18n="coverage.2.name">{t['coverage.2.name']}</option>
+              <option data-i18n="coverage.3.name">{t['coverage.3.name']}</option>
+              <option data-i18n="coverage.4.name">{t['coverage.4.name']}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="f-message" data-i18n="contact.formMessage">{t['contact.formMessage']}</label>
+        <textarea id="f-message" name="message" rows="4"
+          data-i18n-placeholder="contact.formMessagePh" placeholder={t['contact.formMessagePh']}></textarea>
+      </div>
+
+      <button type="submit" class="btn btn--accent form__submit" data-i18n="contact.submit">
+        {t['contact.submit']}
+      </button>
+      <p class="form__note" data-i18n="contact.note">{t['contact.note']}</p>
+    </form>
+  </div>
+</section>
+
+<style>
+  .contact {
+    display: grid;
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.1fr);
+    gap: clamp(2.5rem, 1.5rem + 4vw, 5rem);
+    align-items: start;
+  }
+  .contact__intro h2 {
+    font-size: var(--step-3);
+    margin-top: 1rem;
+  }
+  .contact__lead {
+    margin-top: 1.1rem;
+    color: var(--muted-dark);
+    font-size: var(--step-1);
+    line-height: 1.5;
+    max-width: 40ch;
+  }
+
+  .direct {
+    margin-top: clamp(2rem, 1rem + 3vw, 3.25rem);
+    border-top: 1px solid var(--line-dark);
+    padding-top: 1.6rem;
+  }
+  .direct__title {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: var(--step-1);
+  }
+  .direct__desc {
+    color: var(--muted-dark);
+    font-size: var(--step--1);
+    margin-top: 0.25rem;
+    margin-bottom: 1.2rem;
+  }
+  .direct__row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.95rem 0;
+    border-top: 1px solid var(--line-dark);
+    transition: color 0.25s var(--ease);
+  }
+  .direct__row:hover {
+    color: var(--accent);
+  }
+  .direct__k {
+    font-family: var(--font-display);
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted-dark);
+  }
+  .direct__v {
+    font-family: var(--font-display);
+    font-size: var(--step-1);
+    font-weight: 500;
+  }
+
+  /* ---- form ---- */
+  .form {
+    background: var(--ink-2);
+    border: 1px solid var(--line-dark);
+    padding: clamp(1.5rem, 1rem + 2.5vw, 2.75rem);
+    display: grid;
+    gap: 1.1rem;
+  }
+  .field {
+    display: grid;
+    gap: 0.45rem;
+  }
+  .field-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.1rem;
+  }
+  .field label {
+    font-family: var(--font-display);
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted-dark);
+  }
+  .field input,
+  .field textarea,
+  .field select {
+    width: 100%;
+    font: inherit;
+    color: var(--white);
+    background: var(--ink);
+    border: 1px solid var(--line-dark);
+    padding: 0.85rem 0.95rem;
+    transition: border-color 0.2s var(--ease), background 0.2s var(--ease);
+  }
+  .field textarea {
+    resize: vertical;
+    min-height: 110px;
+  }
+  .field input::placeholder,
+  .field textarea::placeholder {
+    color: #5a6c84;
+  }
+  .field input:focus,
+  .field textarea:focus,
+  .field select:focus {
+    outline: none;
+    border-color: var(--accent);
+    background: var(--ink-3);
+  }
+  .field input:user-invalid,
+  .field select:user-invalid {
+    border-color: #c4564a;
+  }
+
+  .select-wrap {
+    position: relative;
+  }
+  .select-wrap::after {
+    content: '';
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-right: 2px solid var(--accent);
+    border-bottom: 2px solid var(--accent);
+    transform: translateY(-65%) rotate(45deg);
+    pointer-events: none;
+  }
+  .field select {
+    appearance: none;
+    -webkit-appearance: none;
+    padding-right: 2.4rem;
+  }
+  .field select option {
+    color: #fff;
+    background: var(--ink);
+  }
+
+  .form__submit {
+    margin-top: 0.4rem;
+    width: 100%;
+  }
+  .form__note {
+    font-size: 0.78rem;
+    color: var(--muted-dark);
+    text-align: center;
+  }
+
+  @media (max-width: 880px) {
+    .contact {
+      grid-template-columns: 1fr;
+    }
+  }
+  @media (max-width: 460px) {
+    .field-row {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+  import { translations, PHONE_WA } from '../i18n/translations.js';
+
+  const form = document.getElementById('quote-form');
+
+  function lang() {
+    // @ts-ignore — set by Layout
+    return (window.__apmLang && window.__apmLang()) || 'en';
+  }
+
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (!(form instanceof HTMLFormElement)) return;
+    if (!form.reportValidity()) return;
+
+    const dict = translations[lang()] || translations.en;
+    const data = new FormData(form);
+
+    const get = (k) => (data.get(k) || '').toString().trim();
+    const fallback = dict['wa.notProvided'];
+
+    const lines = [
+      dict['wa.intro'],
+      '',
+      `${dict['wa.name']}: ${get('name') || fallback}`,
+      `${dict['wa.phone']}: ${get('phone') || fallback}`,
+      `${dict['wa.email']}: ${get('email') || fallback}`,
+      `${dict['wa.service']}: ${get('service') || fallback}`,
+      `${dict['wa.location']}: ${get('location') || fallback}`,
+      `${dict['wa.details']}: ${get('message') || fallback}`,
+    ];
+
+    const url = `https://wa.me/${PHONE_WA}?text=${encodeURIComponent(lines.join('\n'))}`;
+    window.open(url, '_blank', 'noopener');
+  });
+
+  // Keep the "Message us" direct link localized with a friendly default text
+  const waDirect = document.getElementById('wa-direct');
+  function syncDirect() {
+    const dict = translations[lang()] || translations.en;
+    if (waDirect instanceof HTMLAnchorElement) {
+      waDirect.href = `https://wa.me/${PHONE_WA}?text=${encodeURIComponent(dict['wa.intro'])}`;
+    }
+  }
+  syncDirect();
+  document.querySelectorAll('[data-lang-btn]').forEach((b) =>
+    b.addEventListener('click', () => setTimeout(syncDirect, 0))
+  );
+</script>

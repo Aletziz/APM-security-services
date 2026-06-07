@@ -1,0 +1,160 @@
+---
+import { translations, PHONE_TEL } from '../i18n/translations.js';
+const t = translations.en;
+---
+
+<section class="hero" id="top">
+  <div class="hero__grid" aria-hidden="true"></div>
+  <div class="hero__glow" aria-hidden="true"></div>
+
+  <div class="container hero__inner">
+    <p class="eyebrow reveal" data-i18n="hero.eyebrow">{t['hero.eyebrow']}</p>
+
+    <h1 class="hero__title reveal" style="--d:.08s" data-i18n="hero.title">
+      {t['hero.title']}
+    </h1>
+
+    <p class="hero__lead reveal" style="--d:.16s" data-i18n="hero.lead">
+      {t['hero.lead']}
+    </p>
+
+    <div class="hero__cta reveal" style="--d:.24s">
+      <a class="btn btn--accent" href="#contact" data-i18n="hero.ctaQuote">
+        {t['hero.ctaQuote']}
+      </a>
+      <a class="btn btn--ghost on-dark" href={`tel:${PHONE_TEL}`} data-i18n="hero.ctaCall">
+        {t['hero.ctaCall']}
+      </a>
+    </div>
+
+    <dl class="hero__stats reveal" style="--d:.32s">
+      <div>
+        <dt data-i18n="hero.stat1Value">{t['hero.stat1Value']}</dt>
+        <dd data-i18n="hero.stat1Label">{t['hero.stat1Label']}</dd>
+      </div>
+      <div>
+        <dt data-i18n="hero.stat2Value">{t['hero.stat2Value']}</dt>
+        <dd data-i18n="hero.stat2Label">{t['hero.stat2Label']}</dd>
+      </div>
+      <div>
+        <dt data-i18n="hero.stat3Value">{t['hero.stat3Value']}</dt>
+        <dd data-i18n="hero.stat3Label">{t['hero.stat3Label']}</dd>
+      </div>
+    </dl>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    background: var(--ink);
+    color: var(--white);
+    overflow: hidden;
+    padding-top: clamp(8rem, 6rem + 10vw, 12rem);
+    padding-bottom: clamp(4rem, 3rem + 6vw, 7rem);
+    isolation: isolate;
+  }
+
+  /* faint structural grid — gives an engineered, non-generic backdrop */
+  .hero__grid {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    background-image: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0.04) 1px,
+        transparent 1px
+      ),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    background-size: clamp(48px, 6vw, 84px) clamp(48px, 6vw, 84px);
+    mask-image: radial-gradient(120% 100% at 80% 0%, #000 30%, transparent 78%);
+  }
+
+  .hero__glow {
+    position: absolute;
+    z-index: -1;
+    top: -20%;
+    right: -10%;
+    width: 60vw;
+    height: 60vw;
+    max-width: 720px;
+    max-height: 720px;
+    background: radial-gradient(
+      circle,
+      rgba(182, 136, 63, 0.16),
+      transparent 62%
+    );
+  }
+
+  .hero__inner {
+    position: relative;
+  }
+
+  .hero__title {
+    font-size: var(--step-4);
+    max-width: 16ch;
+    margin-top: 1.4rem;
+  }
+
+  .hero__lead {
+    margin-top: 1.6rem;
+    max-width: 56ch;
+    font-size: var(--step-1);
+    line-height: 1.55;
+    color: var(--muted-dark);
+  }
+
+  .hero__cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.9rem;
+    margin-top: 2.4rem;
+  }
+
+  .hero__stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin-top: clamp(3rem, 2rem + 4vw, 5rem);
+    border-top: 1px solid var(--line-dark);
+    max-width: 640px;
+  }
+  .hero__stats > div {
+    padding: 1.5rem 1.5rem 0 0;
+    border-right: 1px solid var(--line-dark);
+  }
+  .hero__stats > div:last-child {
+    border-right: 0;
+    padding-right: 0;
+  }
+  .hero__stats dt {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 1.4rem + 1.6vw, 2.6rem);
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    color: var(--accent);
+  }
+  .hero__stats dd {
+    font-size: var(--step--1);
+    letter-spacing: 0.04em;
+    color: var(--muted-dark);
+    margin-top: 0.35rem;
+    line-height: 1.35;
+  }
+
+  @media (max-width: 560px) {
+    .hero__stats {
+      grid-template-columns: 1fr;
+    }
+    .hero__stats > div {
+      border-right: 0;
+      border-bottom: 1px solid var(--line-dark);
+      padding: 1.1rem 0;
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+    }
+    .hero__stats dd {
+      margin-top: 0;
+    }
+  }
+</style>

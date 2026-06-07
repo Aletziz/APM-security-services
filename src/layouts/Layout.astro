@@ -1,0 +1,129 @@
+---
+// Variable fonts (weight axis only). Browsers fetch just the Latin subset at
+// runtime via unicode-range, so on-disk size ≠ transferred size.
+import '@fontsource-variable/space-grotesk/wght.css';
+import '@fontsource-variable/inter/wght.css';
+import '../styles/global.css';
+import { translations } from '../i18n/translations.js';
+
+const t = translations.en;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta name="theme-color" content="#0a1626" />
+
+    <title data-i18n="meta.title">{t['meta.title']}</title>
+    <meta name="description" data-i18n-content="meta.description" content={t['meta.description']} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={t['meta.title']} />
+    <meta property="og:description" content={t['meta.description']} />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Local business structured data -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'SecurityService',
+      name: 'APM Security Services',
+      description: t['meta.description'],
+      telephone: '+15618085917',
+      areaServed: ['West Palm Beach', 'Broward', 'Miami', 'Orlando', 'Florida'],
+      address: { '@type': 'PostalAddress', addressRegion: 'FL', addressCountry: 'US' },
+    })} />
+  </head>
+  <body>
+    <a href="#main" class="skip-link" data-i18n="nav.skip">Skip to content</a>
+    <slot />
+  </body>
+</html>
+
+<script>
+  // ---- Reveal on scroll ----
+  const items = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window && items.length) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            io.unobserve(entry.target);
+          }
+        }
+      },
+      { threshold: 0.12, rootMargin: '0px 0px -8% 0px' }
+    );
+    items.forEach((el) => io.observe(el));
+  } else {
+    items.forEach((el) => el.classList.add('is-visible'));
+  }
+</script>
+
+<script>
+  // ---- Language toggle (EN default, swap to ES) ----
+  import { translations } from '../i18n/translations.js';
+
+  const STORE_KEY = 'apm-lang';
+
+  function applyLang(lang) {
+    const dict = translations[lang] || translations.en;
+    document.documentElement.lang = lang;
+
+    document.querySelectorAll('[data-i18n]').forEach((el) => {
+      const key = el.getAttribute('data-i18n');
+      if (key && dict[key] != null) el.textContent = dict[key];
+    });
+    document.querySelectorAll('[data-i18n-placeholder]').forEach((el) => {
+      const key = el.getAttribute('data-i18n-placeholder');
+      if (key && dict[key] != null) el.setAttribute('placeholder', dict[key]);
+    });
+    document.querySelectorAll('[data-i18n-content]').forEach((el) => {
+      const key = el.getAttribute('data-i18n-content');
+      if (key && dict[key] != null) el.setAttribute('content', dict[key]);
+    });
+    document.querySelectorAll('[data-i18n-aria]').forEach((el) => {
+      const key = el.getAttribute('data-i18n-aria');
+      if (key && dict[key] != null) el.setAttribute('aria-label', dict[key]);
+    });
+
+    document.querySelectorAll('[data-lang-btn]').forEach((btn) => {
+      const active = btn.getAttribute('data-lang-btn') === lang;
+      btn.setAttribute('aria-pressed', String(active));
+      btn.classList.toggle('is-active', active);
+    });
+    try {
+      localStorage.setItem(STORE_KEY, lang);
+    } catch (e) {}
+  }
+
+  // expose for the form's WhatsApp builder
+  window.__apmLang = () => {
+    try {
+      return localStorage.getItem(STORE_KEY) || 'en';
+    } catch (e) {
+      return 'en';
+    }
+  };
+
+  let initial = 'en';
+  try {
+    initial = localStorage.getItem(STORE_KEY) || 'en';
+  } catch (e) {}
+  if (initial !== 'en') applyLang(initial);
+  else {
+    document.querySelectorAll('[data-lang-btn="en"]').forEach((b) => {
+      b.setAttribute('aria-pressed', 'true');
+      b.classList.add('is-active');
+    });
+  }
+
+  document.querySelectorAll('[data-lang-btn]').forEach((btn) => {
+    btn.addEventListener('click', () => applyLang(btn.getAttribute('data-lang-btn')));
+  });
+</script>

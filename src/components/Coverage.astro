@@ -1,0 +1,101 @@
+---
+import { translations } from '../i18n/translations.js';
+const t = translations.en;
+
+const places = ['1', '2', '3', '4'];
+---
+
+<section class="section section--dark" id="coverage">
+  <div class="container coverage">
+    <div class="section-head reveal">
+      <p class="eyebrow" data-i18n="coverage.eyebrow">{t['coverage.eyebrow']}</p>
+      <h2 data-i18n="coverage.title">{t['coverage.title']}</h2>
+      <p data-i18n="coverage.lead">{t['coverage.lead']}</p>
+    </div>
+
+    <ul class="places">
+      {
+        places.map((p, i) => (
+          <li class="place reveal" style={`--d:${i * 0.08}s`}>
+            <span class="place__index">{String(i + 1).padStart(2, '0')}</span>
+            <span class="place__body">
+              <span class="place__name" data-i18n={`coverage.${p}.name`}>
+                {t[`coverage.${p}.name`]}
+              </span>
+              <span class="place__tag" data-i18n={`coverage.${p}.tag`}>
+                {t[`coverage.${p}.tag`]}
+              </span>
+            </span>
+            <span class="place__pin" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                <circle cx="12" cy="10" r="2.6" />
+              </svg>
+            </span>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<style>
+  .places {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border-top: 1px solid var(--line-dark);
+  }
+  .place {
+    display: flex;
+    align-items: center;
+    gap: clamp(1rem, 3vw, 2.5rem);
+    padding: clamp(1.4rem, 1rem + 1.5vw, 2.2rem) 0;
+    border-bottom: 1px solid var(--line-dark);
+    transition: padding-left 0.35s var(--ease), background 0.35s var(--ease);
+  }
+  .place:hover {
+    padding-left: 1.2rem;
+  }
+
+  .place__index {
+    font-family: var(--font-display);
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    width: 2.5rem;
+    flex: none;
+  }
+
+  .place__body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    margin-right: auto;
+  }
+  .place__name {
+    font-family: var(--font-display);
+    font-size: clamp(1.4rem, 1.1rem + 1.4vw, 2.1rem);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+  .place__tag {
+    font-size: var(--step--1);
+    letter-spacing: 0.04em;
+    color: var(--muted-dark);
+  }
+
+  .place__pin {
+    color: var(--muted-dark);
+    width: 1.6rem;
+    flex: none;
+    opacity: 0.55;
+    transition: color 0.35s var(--ease), opacity 0.35s var(--ease);
+  }
+  .place:hover .place__pin {
+    color: var(--accent);
+    opacity: 1;
+  }
+</style>

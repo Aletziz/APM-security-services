@@ -1,0 +1,165 @@
+---
+import { translations } from '../i18n/translations.js';
+const t = translations.en;
+
+const services = [
+  {
+    n: '01',
+    key: '1',
+    icon: `<path d="M12 2 4 5v6c0 5 3.4 8.7 8 10 4.6-1.3 8-5 8-10V5l-8-3Z"/><path d="m9 12 2 2 4-4"/>`,
+  },
+  {
+    n: '02',
+    key: '2',
+    icon: `<path d="M3 13h13l-1.5-4.5A2 2 0 0 0 12.6 7H6.2a2 2 0 0 0-1.9 1.4L3 13Z"/><path d="M3 13v4h2"/><path d="M16 17h3a1 1 0 0 0 1-1v-3l-2-1"/><circle cx="7" cy="17.5" r="1.6"/><circle cx="17" cy="17.5" r="1.6"/>`,
+  },
+  {
+    n: '03',
+    key: '3',
+    icon: `<circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/><path d="m18 3 1 2 2 1-2 1-1 2-1-2-2-1 2-1 1-2Z"/>`,
+  },
+];
+---
+
+<section class="section section--paper" id="services">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow" data-i18n="services.eyebrow">{t['services.eyebrow']}</p>
+      <h2 data-i18n="services.title">{t['services.title']}</h2>
+      <p data-i18n="services.lead">{t['services.lead']}</p>
+    </div>
+
+    <div class="cards">
+      {
+        services.map((s, i) => (
+          <article class="card reveal" style={`--d:${i * 0.1}s`}>
+            <div class="card__top">
+              <span class="card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" set:html={s.icon} />
+              </span>
+              <span class="card__n">{s.n}</span>
+            </div>
+            <h3 data-i18n={`services.${s.key}.title`}>{t[`services.${s.key}.title`]}</h3>
+            <p class="card__desc" data-i18n={`services.${s.key}.desc`}>
+              {t[`services.${s.key}.desc`]}
+            </p>
+            <ul class="card__list">
+              <li data-i18n={`services.${s.key}.f1`}>{t[`services.${s.key}.f1`]}</li>
+              <li data-i18n={`services.${s.key}.f2`}>{t[`services.${s.key}.f2`]}</li>
+              <li data-i18n={`services.${s.key}.f3`}>{t[`services.${s.key}.f3`]}</li>
+            </ul>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+  }
+
+  .card {
+    background: var(--white);
+    padding: clamp(1.75rem, 1.2rem + 2vw, 2.6rem);
+    display: flex;
+    flex-direction: column;
+    transition: background 0.35s var(--ease);
+  }
+  .card:hover {
+    background: var(--ink);
+    color: var(--white);
+  }
+
+  .card__top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 1.75rem;
+  }
+  .card__icon {
+    width: 3rem;
+    height: 3rem;
+    display: grid;
+    place-items: center;
+    color: var(--accent);
+    border: 1px solid var(--line);
+    transition: border-color 0.35s var(--ease);
+  }
+  .card:hover .card__icon {
+    border-color: var(--line-dark);
+  }
+  .card__icon svg {
+    width: 1.6rem;
+    height: 1.6rem;
+  }
+  .card__n {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    transition: color 0.35s var(--ease);
+  }
+  .card:hover .card__n {
+    color: var(--accent);
+  }
+
+  .card h3 {
+    font-size: var(--step-1);
+    margin-bottom: 0.8rem;
+  }
+  .card__desc {
+    color: var(--muted);
+    font-size: 0.96rem;
+    line-height: 1.55;
+    transition: color 0.35s var(--ease);
+  }
+  .card:hover .card__desc {
+    color: var(--muted-dark);
+  }
+
+  .card__list {
+    list-style: none;
+    padding: 0;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--line);
+    display: grid;
+    gap: 0.65rem;
+    transition: border-color 0.35s var(--ease);
+  }
+  .card:hover .card__list {
+    border-top-color: var(--line-dark);
+  }
+  .card__list li {
+    position: relative;
+    padding-left: 1.4rem;
+    font-size: 0.9rem;
+    color: var(--ink);
+    transition: color 0.35s var(--ease);
+  }
+  .card:hover .card__list li {
+    color: rgba(255, 255, 255, 0.9);
+  }
+  .card__list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.55em;
+    width: 0.6rem;
+    height: 2px;
+    background: var(--accent);
+  }
+
+  @media (max-width: 880px) {
+    .cards {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
