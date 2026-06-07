@@ -15,7 +15,7 @@ const t = translations.en;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href={`${import.meta.env.BASE_URL}/favicon.svg`.replace(/\/+/g, '/')} type="image/svg+xml" />
     <meta name="theme-color" content="#0a1626" />
 
     <title data-i18n="meta.title">{t['meta.title']}</title>
