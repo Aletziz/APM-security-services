@@ -4,9 +4,72 @@
 import '@fontsource-variable/space-grotesk/wght.css';
 import '@fontsource-variable/inter/wght.css';
 import '../styles/global.css';
-import { translations } from '../i18n/translations.js';
+import { translations, PHONE_TEL, EMAIL } from '../i18n/translations.js';
 
 const t = translations.en;
+
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const ogImage = new URL('og-image.jpg', Astro.site).href;
+
+const keywords = [
+  'APM Security Services',
+  'security company Florida',
+  'security guard Florida',
+  'licensed security guards',
+  'armed and unarmed security',
+  'vehicle patrol security',
+  'custom protection officers',
+  'executive protection Florida',
+  'event security Florida',
+  '24/7 security services',
+  'security guards West Palm Beach',
+  'security guards Broward',
+  'security guards Miami',
+  'security guards Orlando',
+  'security services Palm Beach County',
+  'private security Florida',
+].join(', ');
+
+const cities = ['West Palm Beach', 'Broward County', 'Miami', 'Orlando'];
+
+const offerings = [
+  { name: 'Security Guard', desc: t['services.1.desc'] },
+  { name: 'Vehicle Patrol', desc: t['services.2.desc'] },
+  { name: 'Custom Protection Officers', desc: t['services.3.desc'] },
+];
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'SecurityService',
+  '@id': `${Astro.site}#business`,
+  name: 'APM Security Services',
+  alternateName: 'APM Security',
+  url: Astro.site?.href,
+  image: ogImage,
+  logo: new URL('icon-512.png', Astro.site).href,
+  telephone: PHONE_TEL,
+  email: EMAIL,
+  description: t['meta.description'],
+  priceRange: '$$',
+  currenciesAccepted: 'USD',
+  address: {
+    '@type': 'PostalAddress',
+    addressRegion: 'FL',
+    addressCountry: 'US',
+  },
+  geo: { '@type': 'GeoCoordinates', latitude: 26.7153, longitude: -80.0534 },
+  areaServed: cities.map((c) => ({ '@type': 'City', name: c, containedInPlace: 'Florida, US' })),
+  openingHoursSpecification: {
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+    opens: '00:00',
+    closes: '23:59',
+  },
+  makesOffer: offerings.map((o) => ({
+    '@type': 'Offer',
+    itemOffered: { '@type': 'Service', name: o.name, description: o.desc },
+  })),
+};
 ---
 
 <!doctype html>
@@ -15,28 +78,48 @@ const t = translations.en;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
-    <link rel="icon" href={`${import.meta.env.BASE_URL}/favicon.svg`.replace(/\/+/g, '/')} type="image/svg+xml" />
-    <meta name="theme-color" content="#0a1626" />
 
     <title data-i18n="meta.title">{t['meta.title']}</title>
     <meta name="description" data-i18n-content="meta.description" content={t['meta.description']} />
+    <meta name="keywords" content={keywords} />
+    <meta name="author" content="APM Security Services" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+    <link rel="canonical" href={canonical} />
+
+    <!-- Favicon / icons -->
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-96.png" sizes="96x96" type="image/png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#0a1626" />
+
+    <!-- Local SEO (geo) -->
+    <meta name="geo.region" content="US-FL" />
+    <meta name="geo.placename" content="West Palm Beach, Broward, Miami, Orlando" />
+    <meta name="geo.position" content="26.7153;-80.0534" />
+    <meta name="ICBM" content="26.7153, -80.0534" />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="APM Security Services" />
     <meta property="og:title" content={t['meta.title']} />
     <meta property="og:description" content={t['meta.description']} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="APM Security Services — licensed security across Florida" />
     <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="es_ES" />
 
-    <!-- Local business structured data -->
-    <script type="application/ld+json" set:html={JSON.stringify({
-      '@context': 'https://schema.org',
-      '@type': 'SecurityService',
-      name: 'APM Security Services',
-      description: t['meta.description'],
-      telephone: '+15618085917',
-      areaServed: ['West Palm Beach', 'Broward', 'Miami', 'Orlando', 'Florida'],
-      address: { '@type': 'PostalAddress', addressRegion: 'FL', addressCountry: 'US' },
-    })} />
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={t['meta.title']} />
+    <meta name="twitter:description" content={t['meta.description']} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- Structured data -->
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
   </head>
   <body>
     <a href="#main" class="skip-link" data-i18n="nav.skip">Skip to content</a>

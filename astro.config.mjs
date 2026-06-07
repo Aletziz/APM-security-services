@@ -1,12 +1,12 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
+import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  // GitHub Pages project site. Swap `site` to the final custom domain when ready
-  // (and drop `base`) — see README.
-  site: 'https://aletziz.github.io',
-  base: '/APM-security-services',
+  // Production domain — used for canonical URLs, sitemap and Open Graph.
+  site: 'https://apmsecurityservices.com',
+  integrations: [sitemap()],
   // Inline small stylesheets for faster first paint on a single-page site.
   build: {
     inlineStylesheets: 'auto',

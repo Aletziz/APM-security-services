@@ -40,29 +40,33 @@ npm run preview  # preview the production build
 | Colors / fonts / spacing | `:root` in `src/styles/global.css` |
 | Sections | `src/components/*.astro`, assembled in `src/pages/index.astro` |
 
-## Deploy — GitHub Pages
+## Deploy — Vercel
 
-**Live:** https://aletziz.github.io/APM-security-services/
+Production domain: **https://apmsecurityservices.com**
 
-The site is published to the **`gh-pages` branch** and served by GitHub Pages.
-Redeploy after any change with:
+The project is configured for Vercel (static output, auto-detected Astro framework —
+see [`vercel.json`](vercel.json)). To deploy:
 
-```bash
-npm run deploy   # builds, then force-pushes ./dist to the gh-pages branch
-```
+1. Push this repo to GitHub (already at `Aletziz/APM-security-services`).
+2. In Vercel: **Add New → Project → Import** the repo. Vercel auto-detects Astro
+   (build `astro build`, output `dist`). Click **Deploy**.
+3. **Project → Settings → Domains** → add `apmsecurityservices.com` and `www.apmsecurityservices.com`,
+   then set the DNS records Vercel shows at your domain registrar.
 
-### Note on GitHub Actions
-A workflow exists at [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) for
-automatic deploys on push. It currently **cannot run** because GitHub Actions is locked
-on this account due to a billing issue ("your account is locked due to a billing
-issue"). Until that's resolved at <https://github.com/settings/billing>, use
-`npm run deploy` (the branch method above), which does **not** use Actions minutes.
+Every push to `main` then redeploys automatically. No GitHub Actions needed.
 
-Once billing is fixed, to switch to fully automatic deploys: set the Pages source back to
-**GitHub Actions** (Repo → Settings → Pages → Build and deployment → Source) and every
-push to `main` will deploy on its own.
+> The full step-by-step (domain DNS + Google) is in
+> [`GOOGLE-SEO-GUIDE.md`](GOOGLE-SEO-GUIDE.md).
 
-### Custom domain
-When a custom domain is ready, set `site` to it and **remove** `base` in
-`astro.config.mjs` (the `base` is only needed for the `/APM-security-services/` project
-path on github.io), then redeploy.
+## SEO
+
+- `site` is set to the production domain in [`astro.config.mjs`](astro.config.mjs); it
+  drives canonical URLs, the sitemap and Open Graph.
+- Auto-generated **sitemap** (`/sitemap-index.xml`) via `@astrojs/sitemap`, referenced
+  from [`public/robots.txt`](public/robots.txt).
+- Rich `<head>`: title, description, keywords, canonical, Open Graph + Twitter cards,
+  geo meta, and **LocalBusiness/SecurityService structured data** (JSON-LD) with services
+  and the four service areas — see [`src/layouts/Layout.astro`](src/layouts/Layout.astro).
+- Favicons & social image are generated from the logo/hero by
+  [`scripts/gen-assets.mjs`](scripts/gen-assets.mjs): `npm run gen:assets`
+  (outputs favicon PNGs, apple-touch-icon, PWA icons, and `og-image.jpg`).
