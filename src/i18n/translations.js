@@ -31,6 +31,7 @@ export const translations = {
     'services.title': 'Security services, done right.',
     'services.lead':
       'Three core services, each delivered by screened, trained, and professionally presented officers.',
+    'services.cta': 'Request this service',
 
     'services.1.title': 'Security Guard',
     'services.1.desc':
@@ -151,6 +152,7 @@ export const translations = {
     'services.title': 'Seguridad, hecha bien.',
     'services.lead':
       'Tres servicios principales, cada uno con oficiales verificados, capacitados y de presencia profesional.',
+    'services.cta': 'Solicita este servicio',
 
     'services.1.title': 'Guardia de Seguridad',
     'services.1.desc':
