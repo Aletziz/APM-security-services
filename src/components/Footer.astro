@@ -1,5 +1,6 @@
 ---
 import { translations, PHONE_DISPLAY, PHONE_TEL } from '../i18n/translations.js';
+import Logo from './Logo.astro';
 const t = translations.en;
 const year = new Date().getFullYear();
 ---
@@ -9,9 +10,7 @@ const year = new Date().getFullYear();
     <div class="footer__brand">
       <a class="brand" href="#top" aria-label="APM Security Services — home">
         <span class="brand__mark" aria-hidden="true">
-          <svg viewBox="0 0 24 28" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M12 1 22 5v8c0 6.5-4.3 11.3-10 14C6.3 24.3 2 19.5 2 13V5l10-4Z" />
-          </svg>
+          <Logo class="brand__logo" />
         </span>
         <span class="brand__text">
           <strong>APM</strong>
@@ -69,7 +68,13 @@ const year = new Date().getFullYear();
   }
   .brand__mark {
     color: var(--accent);
-    width: 24px;
+    width: 32px;
+    display: inline-flex;
+  }
+  .brand__logo {
+    width: 100%;
+    height: auto;
+    display: block;
   }
   .brand__text strong {
     display: block;
