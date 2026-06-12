@@ -12,22 +12,32 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
 const ogImage = new URL('og-image.jpg', Astro.site).href;
 
 const keywords = [
-  'APM Security Services',
-  'security company Florida',
-  'security guard Florida',
-  'licensed security guards',
+  // Generic service + location (what people search when they don't know the name)
+  'security service West Palm Beach',
+  'security services West Palm Beach',
+  'security guard service West Palm Beach',
+  'security company West Palm Beach',
+  'security companies West Palm Beach',
+  'security guards West Palm Beach',
+  'private security West Palm Beach',
+  'security guard near me',
+  'security service near me',
+  'security companies near me',
+  // Other cities served
+  'security service Broward',
+  'security service Miami',
+  'security service Orlando',
+  'security services Palm Beach County',
+  // Service-type
   'armed and unarmed security',
   'vehicle patrol security',
   'custom protection officers',
   'executive protection Florida',
   'event security Florida',
   '24/7 security services',
-  'security guards West Palm Beach',
-  'security guards Broward',
-  'security guards Miami',
-  'security guards Orlando',
-  'security services Palm Beach County',
-  'private security Florida',
+  'licensed security guards',
+  // Brand
+  'APM Security Services',
 ].join(', ');
 
 const cities = ['West Palm Beach', 'Broward County', 'Miami', 'Orlando'];

@@ -3,9 +3,9 @@
 // paint + SEO). The language toggle swaps text nodes to Spanish on demand.
 export const translations = {
   en: {
-    'meta.title': 'APM Security Services | Licensed Security Guards in Florida',
+    'meta.title': 'Security Guards West Palm Beach, FL | APM Security Services',
     'meta.description':
-      'Licensed and insured security services across South & Central Florida — uniformed security guards, vehicle patrol, and custom protection officers. West Palm Beach, Broward, Miami & Orlando.',
+      'Looking for a security service in West Palm Beach? APM Security Services provides licensed, insured security guards, vehicle patrol, and custom protection officers across West Palm Beach, Broward, Miami & Orlando. Available 24/7.',
 
     'nav.services': 'Services',
     'nav.coverage': 'Coverage',
@@ -16,6 +16,8 @@ export const translations = {
 
     'hero.eyebrow': 'Licensed & Insured · Florida',
     'hero.title': 'Protection you can stand behind.',
+    'hero.kw':
+      'Security guard services in West Palm Beach, Broward, Miami & Orlando — licensed, insured & on duty 24/7.',
     'hero.lead':
       'APM Security Services provides professional, uniformed security personnel and patrol across South and Central Florida — vetted, trained, and on duty when it matters.',
     'hero.ctaQuote': 'Request a quote',
@@ -125,9 +127,9 @@ export const translations = {
   },
 
   es: {
-    'meta.title': 'APM Security Services | Guardias de Seguridad con Licencia en Florida',
+    'meta.title': 'Servicio de Seguridad en West Palm Beach, FL | APM Security Services',
     'meta.description':
-      'Servicios de seguridad con licencia y asegurados en el sur y centro de Florida — guardias uniformados, patrullaje vehicular y oficiales de protección personalizada. West Palm Beach, Broward, Miami y Orlando.',
+      '¿Buscas un servicio de seguridad en West Palm Beach? APM Security Services ofrece guardias de seguridad con licencia y asegurados, patrullaje vehicular y oficiales de protección en West Palm Beach, Broward, Miami y Orlando. Disponibles 24/7.',
 
     'nav.services': 'Servicios',
     'nav.coverage': 'Cobertura',
@@ -138,6 +140,8 @@ export const translations = {
 
     'hero.eyebrow': 'Con licencia y asegurados · Florida',
     'hero.title': 'Protección que respalda tu tranquilidad.',
+    'hero.kw':
+      'Servicios de guardias de seguridad en West Palm Beach, Broward, Miami y Orlando — con licencia, asegurados y disponibles 24/7.',
     'hero.lead':
       'APM Security Services brinda personal de seguridad uniformado y patrullaje profesional en el sur y centro de Florida — verificados, capacitados y en servicio cuando más importa.',
     'hero.ctaQuote': 'Solicita una cotización',
